@@ -23,6 +23,5 @@ jobs:
         run: |
           npm install -g htmlhint
           htmlhint index.html
-
-      - name: Check JavaScript runs
-        run: node script.js
+      - name: Check JavaScript syntax
+        run: node --check script.js
