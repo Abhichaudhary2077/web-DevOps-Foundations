@@ -17,3 +17,9 @@ jobs:
         run: |
           echo "CI is running"
           echo "Static site checked successfully"
+
+      - name: Check required files
+        run: |
+          test -f index.html
+          test -f style.css
+          test -f script.js
