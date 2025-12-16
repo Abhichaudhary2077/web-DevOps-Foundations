@@ -1,46 +1,66 @@
-name: Portfolio CI
+name: Portfolio CI/CD
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout repository code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Check required files exist
       - name: Check required files exist
         run: |
           test -f index.html
           test -f style.css
           test -f script.js
 
-      # 3️⃣ Validate HTML structure
       - name: Validate HTML
         run: |
           npm install -g htmlhint
           htmlhint index.html
 
-      # 4️⃣ Check JavaScript syntax only (no browser execution)
       - name: Check JavaScript syntax
         run: node --check script.js
 
-      # 5️⃣ Package website into an artifact
-      - name: Package website as artifact
+      - name: Package website
         run: |
           mkdir build
           cp index.html style.css script.js build/
           zip -r portfolio-site.zip build
 
-      # 6️⃣ Upload artifact to GitHub Actions
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: portfolio-site
+          name: site
           path: portfolio-site.zip
+
+  deploy:
+    needs: build   # 🔐 THIS IS THE GATE
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+
+      - name: Unzip artifact
+        run: unzip portfolio-site.zip
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
