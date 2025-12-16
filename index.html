@@ -2,40 +2,145 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>My First Deployment</title>
+  <title>Anshul | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       background: #0f172a;
       color: #e5e7eb;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
+      line-height: 1.6;
     }
-    .card {
+
+    header {
       background: #020617;
       padding: 2rem;
-      border-radius: 12px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      border-bottom: 1px solid #1e293b;
     }
-    h1 {
+
+    header h1 {
+      font-size: 2.5rem;
       margin-bottom: 0.5rem;
     }
-    p {
-      opacity: 0.8;
+
+    header p {
+      color: #94a3b8;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #38bdf8;
+    }
+
+    .card {
+      background: #020617;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      border: 1px solid #1e293b;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #94a3b8;
+      border-top: 1px solid #1e293b;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
+
 <body>
-  <div class="card">
-    <h1>🚀 Hello DevOps</h1>
-    <h2>My First Deployment</h2>
-    <h3>Using Git CI</h3>
-    <p>This page was deployed using Git.</p>
-  </div>
+
+  <header>
+    <h1>Anshul</h1>
+    <p>Aspiring DevOps / MLOps Engineer</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <div class="card">
+      <p>
+        I am an aspiring DevOps and MLOps engineer with hands-on experience in Git,
+        CI/CD, Docker, Kubernetes, and cloud fundamentals. I enjoy building systems
+        that are automated, reproducible, and scalable.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="card">
+      <ul>
+        <li>✔ Git & GitHub</li>
+        <li>✔ CI/CD (GitHub Actions)</li>
+        <li>✔ Docker & Containers</li>
+        <li>✔ Kubernetes Basics</li>
+        <li>✔ Linux Fundamentals</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="card">
+      <p><strong>Magic Read</strong></p>
+      <p>
+        A web-based project deployed using GitHub, CI/CD, Docker, and Kubernetes,
+        focusing on automation and clean deployment workflows.
+      </p>
+    </div>
+
+    <div class="card">
+      <p><strong>Portfolio Website</strong></p>
+      <p>
+        A static portfolio website deployed using GitHub Pages and CI pipelines.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
+      <p>GitHub: <a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
+      <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/your-profile</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Anshul — Built with HTML & deployed using Git</p>
+  </footer>
+
 </body>
 </html>
