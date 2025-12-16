@@ -1,0 +1,60 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Light theme (default) */
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+  line-height: 1.6;
+}
+
+/* Dark theme */
+body.dark {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+header {
+  padding: 2rem;
+  text-align: center;
+  background-color: #020617;
+  color: #e5e7eb;
+}
+
+header button {
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+section {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+h2 {
+  margin-bottom: 0.5rem;
+  color: #2563eb;
+}
+
+body.dark h2 {
+  color: #38bdf8;
+}
+
+ul {
+  margin-left: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid #cbd5f5;
+}

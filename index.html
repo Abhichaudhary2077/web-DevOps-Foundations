@@ -5,79 +5,8 @@
   <title>Anshul | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
-      background: #0f172a;
-      color: #e5e7eb;
-      line-height: 1.6;
-    }
-
-    header {
-      background: #020617;
-      padding: 2rem;
-      text-align: center;
-      border-bottom: 1px solid #1e293b;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      color: #94a3b8;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-    }
-
-    h2 {
-      margin-bottom: 1rem;
-      color: #38bdf8;
-    }
-
-    .card {
-      background: #020617;
-      padding: 1.5rem;
-      border-radius: 12px;
-      margin-bottom: 1.5rem;
-      border: 1px solid #1e293b;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #94a3b8;
-      border-top: 1px solid #1e293b;
-    }
-
-    a {
-      color: #38bdf8;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <!-- CSS link -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
@@ -85,62 +14,39 @@
   <header>
     <h1>Anshul</h1>
     <p>Aspiring DevOps / MLOps Engineer</p>
+    <button id="themeBtn">Toggle Theme</button>
   </header>
 
   <section>
     <h2>About Me</h2>
-    <div class="card">
-      <p>
-        I am an aspiring DevOps and MLOps engineer with hands-on experience in Git,
-        CI/CD, Docker, Kubernetes, and cloud fundamentals. I enjoy building systems
-        that are automated, reproducible, and scalable.
-      </p>
-    </div>
+    <p>
+      I am learning DevOps step by step by building real projects and understanding
+      CI/CD, Docker, and deployment workflows deeply.
+    </p>
   </section>
 
   <section>
     <h2>Skills</h2>
-    <div class="card">
-      <ul>
-        <li>✔ Git & GitHub</li>
-        <li>✔ CI/CD (GitHub Actions)</li>
-        <li>✔ Docker & Containers</li>
-        <li>✔ Kubernetes Basics</li>
-        <li>✔ Linux Fundamentals</li>
-      </ul>
-    </div>
+    <ul>
+      <li>Git & GitHub</li>
+      <li>CI/CD (GitHub Actions)</li>
+      <li>Docker</li>
+      <li>Kubernetes (Basics)</li>
+      <li>Linux Fundamentals</li>
+    </ul>
   </section>
 
   <section>
     <h2>Projects</h2>
-    <div class="card">
-      <p><strong>Magic Read</strong></p>
-      <p>
-        A web-based project deployed using GitHub, CI/CD, Docker, and Kubernetes,
-        focusing on automation and clean deployment workflows.
-      </p>
-    </div>
-
-    <div class="card">
-      <p><strong>Portfolio Website</strong></p>
-      <p>
-        A static portfolio website deployed using GitHub Pages and CI pipelines.
-      </p>
-    </div>
-  </section>
-
-  <section>
-    <h2>Contact</h2>
-    <div class="card">
-      <p>Email: <a href="mailto:your-email@example.com">your-email@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/your-username" target="_blank">github.com/your-username</a></p>
-      <p>LinkedIn: <a href="#" target="_blank">linkedin.com/in/your-profile</a></p>
-    </div>
+    <p><strong>Magic Read</strong> — CI/CD + Docker + Kubernetes project</p>
+    <p><strong>Portfolio Website</strong> — Static site deployed via GitHub Pages</p>
   </section>
 
   <footer>
-    <p>© 2025 Anshul — Built with HTML & deployed using Git</p>
+    <p>© 2025 Anshul</p>
   </footer>
 
+  <!-- JavaScript link -->
+  <script src="script.js"></script>
 </body>
 </html>
