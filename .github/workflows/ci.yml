@@ -1,4 +1,4 @@
-name: Static Site CI
+name: Portfolio CI
 
 on:
   push:
@@ -6,20 +6,23 @@ on:
       - main
 
 jobs:
-  test:
+  check:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run CI check
-        run: |
-          echo "CI is running"
-          echo "Static site checked successfully"
-
-      - name: Check required files
+      - name: Check required files exist
         run: |
           test -f index.html
           test -f style.css
           test -f script.js
+
+      - name: Validate HTML
+        run: |
+          npm install -g htmlhint
+          htmlhint index.html
+
+      - name: Check JavaScript runs
+        run: node script.js
