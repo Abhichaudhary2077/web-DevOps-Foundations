@@ -45,7 +45,7 @@ jobs:
           path: portfolio-site.zip
 
   deploy:
-    needs: build   # 🔐 THIS IS THE GATE
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -64,3 +64,15 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
+
+  docker-build:
+    needs: build   # 🔐 CI must pass first
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: |
+          docker build -t web-devops-foundations:${{ github.sha }} .
