@@ -38,10 +38,21 @@ jobs:
       - name: Validate JavaScript syntax
         run: node --check script.js
 
+      # 🔹 BUILD INFO (NEW)
+      - name: Generate build info
+        run: |
+          echo '{' > build-info.json
+          echo '  "commit": "'"${GITHUB_SHA::7}"'",' >> build-info.json
+          echo '  "branch": "'"${GITHUB_REF_NAME}"'",' >> build-info.json
+          echo '  "build_time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",' >> build-info.json
+          echo '  "source": "GitHub Actions"' >> build-info.json
+          echo '}' >> build-info.json
+
       - name: Package static website
         run: |
           mkdir build
           cp index.html style.css script.js build/
+          cp build-info.json build/
           zip -r site.zip build
 
       - name: Upload build artifact
