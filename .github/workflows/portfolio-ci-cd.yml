@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-# 🔐 Permissions needed for Pages + GHCR
 permissions:
   contents: read
   pages: write
@@ -14,7 +13,7 @@ permissions:
 
 jobs:
   # ========================
-  # 1️⃣ CI — Validate source
+  # 1️⃣ CI — Validate & Package
   # ========================
   build:
     name: CI - Validate & Package
@@ -38,21 +37,23 @@ jobs:
       - name: Validate JavaScript syntax
         run: node --check script.js
 
-      # 🔹 BUILD INFO (NEW)
+      # 🔹 BUILD METADATA
       - name: Generate build info
         run: |
-          echo '{' > build-info.json
-          echo '  "commit": "'"${GITHUB_SHA::7}"'",' >> build-info.json
-          echo '  "branch": "'"${GITHUB_REF_NAME}"'",' >> build-info.json
-          echo '  "build_time": "'"$(date -u +"%Y-%m-%dT%H:%M:%SZ")"'",' >> build-info.json
-          echo '  "source": "GitHub Actions"' >> build-info.json
-          echo '}' >> build-info.json
+          cat <<EOF > build-info.json
+          {
+            "commit": "${GITHUB_SHA}",
+            "short_commit": "${GITHUB_SHA::7}",
+            "branch": "${GITHUB_REF_NAME}",
+            "build_time": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "pipeline": "GitHub Actions"
+          }
+          EOF
 
       - name: Package static website
         run: |
           mkdir build
-          cp index.html style.css script.js build/
-          cp build-info.json build/
+          cp index.html style.css script.js build-info.json build/
           zip -r site.zip build
 
       - name: Upload build artifact
@@ -78,7 +79,7 @@ jobs:
       - name: Extract artifact
         run: unzip site.zip
 
-      - name: Prepare Pages artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: build
