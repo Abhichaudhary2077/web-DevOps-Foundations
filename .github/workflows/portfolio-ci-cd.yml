@@ -111,6 +111,10 @@ jobs:
           OWNER_LOWER=${GITHUB_REPOSITORY_OWNER,,}
           IMAGE=ghcr.io/$OWNER_LOWER/web-devops-foundations
 
-          docker build -t $IMAGE:${{ github.sha }} -t $IMAGE:latest .
+          docker build \
+          --build-arg BUILD_SHA=${{ github.sha }} \
+          --build-arg BUILD_DATE="$(date -u +'%Y-%m-%d %H:%M:%S UTC')" \
+          -t $IMAGE:${{ github.sha }} \
+          -t $IMAGE:latest .
           docker push $IMAGE:${{ github.sha }}
           docker push $IMAGE:latest

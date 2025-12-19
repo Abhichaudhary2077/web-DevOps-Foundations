@@ -1,15 +1,18 @@
-// Reveal on scroll
-const reveals = document.querySelectorAll(".reveal");
+// Theme toggle
+const toggle = document.getElementById("themeToggle");
 
-const revealOnScroll = () => {
-  const windowHeight = window.innerHeight;
-  reveals.forEach((el) => {
-    if (el.getBoundingClientRect().top < windowHeight - 100) {
-      el.classList.add("active");
-    }
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("light");
+});
+
+// Fetch build info (CI-generated)
+fetch("/build-info.json")
+  .then((res) => res.json())
+  .then((data) => {
+    document.getElementById("buildInfo").innerText =
+      `© 2025 Anshul • Build ${data.sha} • ${data.date}`;
+  })
+  .catch(() => {
+    document.getElementById("buildInfo").innerText =
+      "© 2025 Anshul • Build info unavailable";
   });
-};
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-
